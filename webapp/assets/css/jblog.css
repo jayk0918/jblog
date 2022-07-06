@@ -87,7 +87,7 @@ a:hover {text-decoration: none; color: #000000; }
 
 /* 메인-푸터 */
 #center-content #footer {height: 40px; padding:0px 10px 0px 10px; background:#F0F0F0; }
-#center-content #footer li {margin-right: 20px; paddign: 10px; float: left; font-size: 13px;  line-height:40px;}
+#center-content #footer li {margin-right: 20px; padding: 10px; float: left; font-size: 13px;  line-height:40px;}
 div#footer		{ color:#666 }
 
 
@@ -181,7 +181,7 @@ div#footer		{ color:#666 }
 
 
 /* 개인블로그 오른쪽영역(글리스트) */
-#post_area {}
+/*#post_area {}*/
 #post_area #list #listTitle {width: 100%; margin: 50px 0px 5px 0px; padding: 0px 5px 3px 5px; border-bottom: 1px solid #808080; }
 #post_area #list table {width: 100%; border-collapse: collapse; font-size: 13px;}
 #post_area #list table tr {border-bottom: 1px solid #B7B7B7; }

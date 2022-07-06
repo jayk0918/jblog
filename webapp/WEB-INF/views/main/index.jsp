@@ -12,7 +12,9 @@
 <body>
 	<div id="center-content">
 		
-		<!--메인 해더 자리 -->
+		<!-- header -->
+		<c:import url="/WEB-INF/views/includes/main-header.jsp"></c:import>
+		<!-- //header -->
 		
 		<form id="search-form">
 			<fieldset>
@@ -34,7 +36,9 @@
 			
 		</div>
 		
-		<!-- 메인 푸터  자리-->
+		<!-- footer -->
+		<c:import url="/WEB-INF/views/includes/main-footer.jsp"></c:import>
+		<!-- //footer -->
 	
 	
 	</div>
