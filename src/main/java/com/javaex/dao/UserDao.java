@@ -23,5 +23,13 @@ public class UserDao {
 		return authVo;
 	}
 	
+	public String idCheck(UserVo userVo) {
+		String result = sqlSession.selectOne("user.idCheck", userVo);
+		System.out.println("dao : " + result);
+		return result;
+		
+	}
+	
+	
 	
 }

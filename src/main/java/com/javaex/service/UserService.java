@@ -20,4 +20,24 @@ public class UserService {
 		UserVo authUser = userDao.getUser(userVo);
 		return authUser;
 	}
+	
+	public boolean idCheck(String id) {
+		UserVo userVo = new UserVo();
+		userVo.setId(id);
+		
+		String result = userDao.idCheck(userVo);
+		
+		System.out.println("userservice : " + result);
+		
+		if(result != null) {
+			return true;
+		}else if(id == ""){
+			return true;
+		}else {
+			return false;
+		}
+		
+		
+	}
+	
 }

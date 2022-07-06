@@ -6,7 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>JBlog</title>
+
+<!-- css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jblog.css">
+<!-- jquery -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 
 </head>
 <body>
@@ -32,7 +36,7 @@
 		      		</tr>
 		      		<tr>
 		      			<td></td>
-		      			<td id="tdMsg" colspan="2">사용할 수 있는 아이디 입니다.</td>
+		      			<td id="tdMsg" colspan="2"></td>
 		      		</tr> 
 		      		<tr>
 		      			<td><label for="txtPassword">패스워드</label> </td>
@@ -68,5 +72,72 @@
 
 </body>
 
+<script type = "text/javascript">
+$("#joinform").on("submit", function(){
+	console.log("회원가입 버튼");
+	
+	var id = $("#txtId").val();
+	var password = $("#txtPassword").val();
+	var name = $("#txtUserName").val();
+	var policy = $("#chkAgree").is(":checked");
+	
+	
+	if(id == "" || id == null){
+		alert("아이디 입력");
+		return false;
+	}
+	
+	if(password == "" || password == null){
+		alert("패스워드 입력");
+		return false;
+	}
+	
+	if(name == "" || name == null){
+		alert("이름 입력");
+		return false;
+	}
+	
+	if(policy == false){
+		alert("약관 동의 필요");
+		return false;
+	}
+})
+
+
+$("#btnIdCheck").on("click", function(){
+	
+	var id = $("#txtId").val();
+	
+	console.log(id);
+	
+	$.ajax({
+		url : "${pageContext.request.contextPath}/api/user/idCheck",
+		type : "post",
+		contentType : "application/json",
+		data: JSON.stringify(id),
+		dataType : "json",
+		success : function(result){
+			if(result == true){
+				$("#tdMsg").html("다른 아이디로 가입해주세요.")
+			}else{
+				$("#tdMsg").html("사용할 수 있는 아이디 입니다.")
+			}
+		},
+		error : function(XHR, status, error) {
+			console.log(status + ' : ' + error);
+			
+		}
+	});
+	
+	
+});
+
+
+
+
+
+
+
+</script>
 
 </html>
