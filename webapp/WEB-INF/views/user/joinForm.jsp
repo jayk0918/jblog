@@ -73,14 +73,42 @@
 </body>
 
 <script type = "text/javascript">
-$("#joinform").on("submit", function(){
+
+$("#btnIdCheck").on("click", function(){
+	var id = $("#txtId").val();
+	console.log(id);
+	
+	$.ajax({
+		url : "${pageContext.request.contextPath}/api/user/idCheck",
+		type : "post",
+		contentType : "application/json",
+		data: JSON.stringify(id),
+		dataType : "json",
+		success : function(result){
+			if(result == true){
+				$("#tdMsg").html("다른 아이디로 가입해주세요.")
+				var idChecked = true;
+			}else{
+				$("#tdMsg").html("사용할 수 있는 아이디 입니다.")
+				var idChecked = true;
+				var duplicateId = false;
+			}
+		},
+		error : function(XHR, status, error) {
+			console.log(status + ' : ' + error);
+			
+		}
+	});
+	
+});
+
+$("#joinForm").on("submit", function(){
 	console.log("회원가입 버튼");
 	
 	var id = $("#txtId").val();
 	var password = $("#txtPassword").val();
 	var name = $("#txtUserName").val();
 	var policy = $("#chkAgree").is(":checked");
-	
 	
 	if(id == "" || id == null){
 		alert("아이디 입력");
@@ -102,40 +130,6 @@ $("#joinform").on("submit", function(){
 		return false;
 	}
 })
-
-
-$("#btnIdCheck").on("click", function(){
-	
-	var id = $("#txtId").val();
-	
-	console.log(id);
-	
-	$.ajax({
-		url : "${pageContext.request.contextPath}/api/user/idCheck",
-		type : "post",
-		contentType : "application/json",
-		data: JSON.stringify(id),
-		dataType : "json",
-		success : function(result){
-			if(result == true){
-				$("#tdMsg").html("다른 아이디로 가입해주세요.")
-			}else{
-				$("#tdMsg").html("사용할 수 있는 아이디 입니다.")
-			}
-		},
-		error : function(XHR, status, error) {
-			console.log(status + ' : ' + error);
-			
-		}
-	});
-	
-	
-});
-
-
-
-
-
 
 
 </script>

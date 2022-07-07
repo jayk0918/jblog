@@ -20,12 +20,12 @@ public class UserController {
 	
 	@RequestMapping(value = "joinForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String joinForm() {
-		return "/user/joinForm";
+		return "user/joinForm";
 	}
 	
 	@RequestMapping(value = "loginForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String loginForm() {
-		return "/user/loginForm";
+		return "user/loginForm";
 	}
 	
 	@RequestMapping(value = "login", method = {RequestMethod.GET, RequestMethod.POST})

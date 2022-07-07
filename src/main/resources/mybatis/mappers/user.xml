@@ -15,6 +15,7 @@
 		<![CDATA[
 			select 	userno
 					,username
+					,id
 			from users
 			where id = #{id}
 			and password = #{password}
