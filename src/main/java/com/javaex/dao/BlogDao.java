@@ -18,8 +18,7 @@ public class BlogDao {
 	}
 	
 	public BlogVo getInfo(String id) {
-		BlogVo blogVo = sqlSession.selectOne("blog.getInfo", id);
-		return blogVo;
+		return sqlSession.selectOne("blog.getInfo", id);
 	}
 	
 	

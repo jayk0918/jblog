@@ -7,7 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>JBlog</title>
+
+<!-- css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jblog.css">
+
+<!-- jquery -->
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 </head>
 
@@ -22,12 +26,13 @@
 				<div id="profile">
 					
 					<!-- 기본이미지 -->
-					<img id="proImg" src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg">
+					<img id="proImg" src="${pageContext.request.contextPath}${blogVo.logoFile}">
 					
 					<!-- 사용자업로드 이미지 -->
 					<%-- <img id="proImg" src=""> --%>
 					
-					<div id="nick">정우성(hijava)님</div>
+					<div id="nick">${blogVo.userName}(${blogVo.id})님</div>
+					
 				</div>
 				<div id="cate">
 					<div class="text-left">
@@ -51,7 +56,7 @@
 				<div id="postBox" class="clearfix">
 						<div id="postTitle" class="text-left"><strong>08.페이징</strong></div>
 						<div id="postDate" class="text-left"><strong>2020/07/23</strong></div>
-						<div id="postNick">정우성(hijava)님</div>
+						<div id="postNick">${blogVo.userName}님</div>
 				</div>
 				<!-- //postBox -->
 			
@@ -111,8 +116,6 @@
 			</div>
 			<!-- //post_area -->
 			
-			
-			
 		</div>	
 		<!-- //content -->
 		<div class=></div>
@@ -123,4 +126,9 @@
 	</div>
 	<!-- //wrap -->
 </body>
+
+<script type = "text/javascript">
+	
+</script>
+
 </html>

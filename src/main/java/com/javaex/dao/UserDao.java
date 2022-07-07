@@ -27,9 +27,6 @@ public class UserDao {
 		String result = sqlSession.selectOne("user.idCheck", userVo);
 		System.out.println("dao : " + result);
 		return result;
-		
 	}
-	
-	
 	
 }

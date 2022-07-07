@@ -3,6 +3,12 @@
 
 
 <mapper namespace="blog">
+	<resultMap id="resultMapBlog" type="com.javaex.vo.BlogVo">
+		<result column="b.id" property="id" />
+		<result column="b.blogtitle" property="blogTitle" />
+		<result column="b.logofile" property="logoFile" />
+		<result column="u.userName" property="userName" />
+	</resultMap>
 
 <insert id = "create" parameterType = "com.javaex.vo.BlogVo">
 
@@ -16,11 +22,13 @@
 <select id = "getInfo" parameterType = "String" resultType = "com.javaex.vo.BlogVo">
 
 	<![CDATA[
-		select	id
-				,blogtitle
-				,logofile
-		from blog
-		where id = #{id}
+		select  b.id id
+        		,b.blogtitle blogTitle
+        		,b.logofile logoFile
+        		,u.userName userName
+		from blog b, users u
+		where b.id = u.id
+		and b.id = #{id}
 	]]>
 	
 </select>

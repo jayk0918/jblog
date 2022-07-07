@@ -5,7 +5,16 @@ public class BlogVo {
 	private String id;
 	private String blogTitle;
 	private String logoFile;
+	private String userName;
 	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	public BlogVo() {}
 
 	public String getId() {
@@ -34,7 +43,10 @@ public class BlogVo {
 
 	@Override
 	public String toString() {
-		return "BlogVo [id=" + id + ", blogTitle=" + blogTitle + ", logoFile=" + logoFile + "]";
+		return "BlogVo [id=" + id + ", blogTitle=" + blogTitle + ", logoFile=" + logoFile + ", userName=" + userName
+				+ "]";
 	}
+
+	
 	
 }
