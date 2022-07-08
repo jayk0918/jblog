@@ -46,6 +46,7 @@
 		      		</thead>
 		      		<tbody id="cateList">
 		      			<!-- 리스트 영역 -->
+		      			<!--  
 		      			<tr>
 							<td>1</td>
 							<td>자바프로그래밍</td>
@@ -55,6 +56,7 @@
 						    	<img class="btnCateDel" src="${pageContext.request.contextPath}/assets/images/delete.jpg">
 						    </td>
 						</tr>
+						-->
 						<!-- 리스트 영역 -->
 					</tbody>
 				</table>
@@ -93,9 +95,48 @@
 </body>
 
 <script type = "text/javascript">
+$(document).ready(function(){
+	fetchList();
+})
+
+function fetchList(){
+	$.ajax({
+		url : "${pageContext.request.contextPath}/api/admin/category/getList",
+		type : "post",
+		dataType : "json",
+		success : function(categoryList){
+			console.log(categoryList);
+			for(var i=0; i<categoryList.length; i++){
+				render(categoryList[i], 'down');
+			}
+		},
+		error : function(XHR, status, error) {
+			console.log(status + ' : ' + error);
+		}
+	});
+}
 
 
-
+function render(categoryVo, opt){
+	console.log("render()");
+	var str = '';
+	str += '    <tr id = "t' +categoryVo.cateNo+ '">' ;
+	str += '        <td>'+categoryVo.cateNo+'</td>' ;
+	str += '        <td>'+categoryVo.cateName+'</td>' ;
+	str += '        <td>'+categoryVo.count+'</td>' ;
+	str += '        <td>'+categoryVo.description+'</td>' ;
+	str += '        <td><img class="btnCateDel" src="${pageContext.request.contextPath}/assets/images/delete.jpg"></td>' ;
+	str += '    </tr>' ;
+	
+	if(opt == "down"){
+		$("#cateList").append(str);
+	}else if(opt == 'up'){
+		$("#cateList").prepend(str);
+	}else{
+		console.log('opt error');
+	}
+	
+}
 
 
 </script>

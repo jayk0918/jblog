@@ -4,16 +4,34 @@
 
 <mapper namespace="category">
 
-<select id = "getList">
+	<resultMap id="resultMapCategoryVo" type="com.javaex.vo.CategoryVo">
+		<result column="cateno" property="cateNo" />
+		<result column="catename" property="cateName" />
+		<result column="description" property="description" />
+		<result column="reg_date" property="date" />
+		<result column="count" property="count" />
+	</resultMap>
+
+	<select id="getList" resultMap="resultMapCategoryVo">
 
 	<![CDATA[
-		select  cateno
-        		,catename
-        		,description
-		from category
-	]]>
+		select  cate.cateno
+       			,cate.catename
+        		,ct.count
+        		,cate.description
 
-</select>
+		from category cate
+			,
+
+		(select cateno
+		        ,count(*) count
+		from post
+		group by cateno) ct
+		where cate.cateno = ct.cateno
+		order by cate.cateno desc
+		]]>
+
+	</select>
 
 
 

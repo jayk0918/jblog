@@ -15,7 +15,7 @@ public class BlogController {
 	@Autowired
 	private BlogService blogService;
 	
-	@RequestMapping(value = "/{id}" , method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "{id}" , method = {RequestMethod.GET, RequestMethod.POST})
 	public String blogMain(@PathVariable String id, Model model) {
 		BlogVo blogVo = blogService.getInfo(id);
 		model.addAttribute("blogVo", blogVo);

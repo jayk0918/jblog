@@ -7,6 +7,7 @@ public class CategoryVo {
 	private String cateName;
 	private String description;
 	private String date;
+	private int count;
 	
 	public CategoryVo() {}
 
@@ -49,12 +50,19 @@ public class CategoryVo {
 	public void setDate(String date) {
 		this.date = date;
 	}
+	
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
 
 	@Override
 	public String toString() {
 		return "CategoryVo [cateNo=" + cateNo + ", id=" + id + ", cateName=" + cateName + ", description=" + description
-				+ ", date=" + date + "]";
+				+ ", date=" + date + ", count=" + count + "]";
 	}
-	
 	
 }
