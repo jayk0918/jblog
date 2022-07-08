@@ -3,6 +3,6 @@ package com.javaex.dao;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CategoryDao {
+public class PostDao {
 
 }

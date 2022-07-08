@@ -4,6 +4,17 @@
 
 <mapper namespace="category">
 
+<select id = "getList">
+
+	<![CDATA[
+		select  cateno
+        		,catename
+        		,description
+		from category
+	]]>
+
+</select>
+
 
 
 
