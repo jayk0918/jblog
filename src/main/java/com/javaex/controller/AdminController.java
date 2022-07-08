@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.BlogService;
 import com.javaex.vo.BlogVo;
@@ -17,7 +19,6 @@ public class AdminController {
 	@Autowired
 	private BlogService blogService;
 	
-	
 	@RequestMapping(value = "{id}/admin/basic", method = {RequestMethod.GET, RequestMethod.POST})
 	public String basic(@PathVariable String id, Model model) {
 		BlogVo blogVo = blogService.getInfo(id);
@@ -26,10 +27,11 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "{id}/admin/update", method = {RequestMethod.GET, RequestMethod.POST})
-	public String update(@ModelAttribute BlogVo blogVo, @PathVariable String id){
-		
+	public String update(@ModelAttribute BlogVo blogVo,
+						 @PathVariable String id,
+						 @RequestParam(value="file") MultipartFile file) {
 		System.out.println("contoller : " + blogVo);
-		blogService.update(blogVo);
+		blogService.update(blogVo, file);
 		
 		return "redirect:/";
 	}
