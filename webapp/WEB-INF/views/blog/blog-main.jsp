@@ -24,12 +24,16 @@
 		<div id="content" class="clearfix">
 			<div id="profilecate_area">
 				<div id="profile">
-					
+					<c:choose>
+						<c:when test = "${blogVo.logoFile eq '/assets/images/spring-logo.jpg'}">
 							<!-- 기본이미지 -->
-							<img id="proImg" src="${pageContext.request.contextPath}${blogVo.logoFile}">
+							<img id="proImg" src="${pageContext.request.contextPath}/${blogVo.logoFile}">
+						</c:when>
+						<c:otherwise>
 							<!-- 사용자업로드 이미지 -->
 							<img id="proImg" src="${pageContext.request.contextPath}/upload/${blogVo.logoFile}">
-							
+						</c:otherwise>
+					</c:choose>
 					<div id="nick">${blogVo.userName}(${blogVo.id})님</div>
 				</div>
 				<div id="cate">
