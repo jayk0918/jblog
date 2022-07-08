@@ -31,16 +31,18 @@ public class BlogService {
 			BlogVo oldData = blogDao.getInfo(id);
 			String oldLogoFile = oldData.getLogoFile();
 			blogVo.setLogoFile(oldLogoFile);
+			System.out.println("oldData : " + blogVo);
 			blogDao.update(blogVo);
-		}else {
-			if(blogVo.getBlogTitle() == null) {
-				// 제목 예외
-				String id = blogVo.getId();
-				BlogVo oldData = blogDao.getInfo(id);
-				String oldtitle = oldData.getBlogTitle();
-				blogVo.setBlogTitle(oldtitle);
-			}
 			
+		}else if(blogVo.getBlogTitle() == null){
+			// 제목 예외
+			String id = blogVo.getId();
+			BlogVo oldData = blogDao.getInfo(id);
+			String oldtitle = oldData.getBlogTitle();
+			blogVo.setBlogTitle(oldtitle);
+			blogDao.update(blogVo);
+			
+		} else {
 			String saveDir = "/Users/jaykim0918/javaStudy/upload/";
 			String orgName = file.getOriginalFilename();
 			String exName = orgName.substring(orgName.lastIndexOf("."));
@@ -62,12 +64,5 @@ public class BlogService {
 			System.out.println("service : " + blogVo);
 			blogDao.update(blogVo);
 		}
-		
-		System.out.println("update : " + blogVo);
 	}
-	
-	
-	
-	
-	
-}
+}	
