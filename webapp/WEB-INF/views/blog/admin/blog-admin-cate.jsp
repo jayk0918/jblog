@@ -95,19 +95,22 @@
 </body>
 
 <script type = "text/javascript">
+
+var id = "${authUser.id}";
+
 $(document).ready(function(){
 	fetchList();
 })
 
 function fetchList(){
 	$.ajax({
-		url : "${pageContext.request.contextPath}/api/admin/category/getList",
+		url : "${pageContext.request.contextPath}/admin/api/category/getList",
 		type : "post",
 		dataType : "json",
-		success : function(categoryList){
-			console.log(categoryList);
-			for(var i=0; i<categoryList.length; i++){
-				render(categoryList[i], 'down');
+		success : function(categoryVo){
+			console.log(categoryVo);
+			for(var i=0; i<categoryVo.length; i++){
+				render(categoryVo[i], 'down');
 			}
 		},
 		error : function(XHR, status, error) {
