@@ -21,7 +21,7 @@
 			<c:import url="/WEB-INF/views/includes/admin-menu.jsp"></c:import>
 			
 			<div id="admin-content">
-				<form action="" method="post" >
+				<form action="update" method="post" >
 	 		      	<table id="admin-basic">
 	 		      		<colgroup>
 							<col style="width: 100px;">
@@ -33,7 +33,7 @@
 			      		</tr>
 			      		<tr>
 			      			<td><label>로고이미지</label></td>
-			      			<td class="text-left"><img src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg"></td>   
+			      			<td class="text-left"><img src="${pageContext.request.contextPath}${blogVo.logoFile}"></td>   
 			      		</tr>      		
 			      		<tr>
 			      			<td>&nbsp;</td>

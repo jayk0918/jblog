@@ -33,5 +33,17 @@
 	
 </select>
 
+<update id = "update" parameterType = "com.javaex.vo.BlogVo">
+
+	<![CDATA[
+		update blog
+		set blogtitle = #{blogTitle}
+			,logofile = #{logoFile}
+		where id = #{id} 
+	]]>
+
+</update>
+
+
 
 </mapper>

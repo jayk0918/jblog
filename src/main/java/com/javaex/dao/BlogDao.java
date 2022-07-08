@@ -21,5 +21,9 @@ public class BlogDao {
 		return sqlSession.selectOne("blog.getInfo", id);
 	}
 	
+	public void update(BlogVo blogVo) {
+		sqlSession.update("blog.update", blogVo);
+	}
+	
 	
 }
