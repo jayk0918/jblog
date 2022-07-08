@@ -23,8 +23,6 @@ public class BlogService {
 		return blogDao.getInfo(id);
 	}
 	
-	
-	
 	public void update(BlogVo blogVo, MultipartFile file) {
 		
 		if(file == null) {
@@ -35,7 +33,6 @@ public class BlogService {
 			blogVo.setLogoFile(oldLogoFile);
 			blogDao.update(blogVo);
 		}else {
-			
 			if(blogVo.getBlogTitle() == null) {
 				// 제목 예외
 				String id = blogVo.getId();
@@ -45,14 +42,13 @@ public class BlogService {
 			}
 			
 			String saveDir = "/Users/jaykim0918/javaStudy/upload/";
-			String orgName = blogVo.getLogoFile();
+			String orgName = file.getOriginalFilename();
 			String exName = orgName.substring(orgName.lastIndexOf("."));
 			String saveName = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
 			String filePath = saveDir + saveName;
 			
 			try {
 				byte[] fileData = file.getBytes();
-				
 				OutputStream os = new FileOutputStream(filePath);
 				BufferedOutputStream bos = new BufferedOutputStream(os);
 				bos.write(fileData);
@@ -63,6 +59,7 @@ public class BlogService {
 			}
 			
 			blogVo.setLogoFile(saveName);
+			System.out.println("service : " + blogVo);
 			blogDao.update(blogVo);
 		}
 		

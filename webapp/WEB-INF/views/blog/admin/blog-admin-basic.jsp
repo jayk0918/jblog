@@ -21,7 +21,7 @@
 			<c:import url="/WEB-INF/views/includes/admin-menu.jsp"></c:import>
 			
 			<div id="admin-content">
-				<form action="update" method="post" >
+				<form action="upload" method="post" enctype = "multipart/form-data">
 	 		      	<table id="admin-basic">
 	 		      		<colgroup>
 							<col style="width: 100px;">
