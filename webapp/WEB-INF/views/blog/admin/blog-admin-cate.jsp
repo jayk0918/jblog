@@ -6,7 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>JBlog</title>
+<!-- css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jblog.css">
+<!-- javascript -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 
 
 </head>
@@ -52,15 +55,6 @@
 						    	<img class="btnCateDel" src="${pageContext.request.contextPath}/assets/images/delete.jpg">
 						    </td>
 						</tr>
-						<tr>
-							<td>2</td>
-							<td>오라클</td>
-							<td>5</td>
-							<td>오라클 설치와 sql문</td>
-						    <td class='text-center'>
-						    	<img class="btnCateDel" src="${pageContext.request.contextPath}/assets/images/delete.jpg">
-						    </td>
-						</tr>
 						<!-- 리스트 영역 -->
 					</tbody>
 				</table>
@@ -91,14 +85,19 @@
 		
 		
 		<!-- 개인블로그 푸터 -->
-		
+		<c:import url="/WEB-INF/views/includes/blog-footer.jsp"></c:import>
 	
 	
 	</div>
 	<!-- //wrap -->
 </body>
 
+<script type = "text/javascript">
 
 
+
+
+
+</script>
 
 </html>

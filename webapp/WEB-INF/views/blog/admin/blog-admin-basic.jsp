@@ -33,7 +33,14 @@
 			      		</tr>
 			      		<tr>
 			      			<td><label>로고이미지</label></td>
-			      			<td class="text-left"><img src="${pageContext.request.contextPath}${blogVo.logoFile}"></td>   
+			      			<c:choose>
+			      				<c:when test = "${blogVo.logoFile eq '/assets/images/spring-logo.jpg'}">
+			      					<td class="text-left"><img src="${pageContext.request.contextPath}/${blogVo.logoFile}"></td>
+								</c:when>
+								<c:otherwise>
+									<td class="text-left"><img src="${pageContext.request.contextPath}/upload/${blogVo.logoFile}"></td>
+								</c:otherwise>
+							</c:choose>
 			      		</tr>      		
 			      		<tr>
 			      			<td>&nbsp;</td>
@@ -52,8 +59,7 @@
 		
 		
 		<!-- 개인블로그 푸터 -->
-		
-	
+		<c:import url="/WEB-INF/views/includes/blog-footer.jsp"></c:import>
 	
 	</div>
 	<!-- //wrap -->
