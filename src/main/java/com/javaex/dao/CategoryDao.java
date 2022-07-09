@@ -14,11 +14,13 @@ public class CategoryDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<CategoryVo> getList() {
-		return sqlSession.selectList("category.getList");
+	public List<CategoryVo> getList(String id) {
+		return sqlSession.selectList("category.getList", id);
 	}
 	
-	
+	public void addList(CategoryVo categoryVo) {
+		sqlSession.insert("category.insert", categoryVo);
+	}
 	
 	
 	

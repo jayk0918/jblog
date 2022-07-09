@@ -12,7 +12,7 @@
 		<result column="count" property="count" />
 	</resultMap>
 
-	<select id="getList" resultMap="resultMapCategoryVo">
+	<select id="getList" parameterType = "string" resultMap="resultMapCategoryVo">
 
 	<![CDATA[
 		select  cate.cateno
@@ -21,23 +21,28 @@
         		,cate.description
 
 		from category cate
-			,
+		
+		,
 
 		(select cateno
 		        ,count(*) count
 		from post
 		group by cateno) ct
 		where cate.cateno = ct.cateno
+		and cate.id = #{id}
 		order by cate.cateno desc
 		]]>
 
 	</select>
-
-
-
-
-
-
+	
+	<insert id = "insert" parameterType = "com.javaex.vo.CategoryVo">
+	
+	<![CDATA[
+		insert into category
+		values(seq_category_no.nextval, #{id}, #{cateName}, #{description}, sysdate)
+	]]>
+	
+	</insert>
 
 
 </mapper>

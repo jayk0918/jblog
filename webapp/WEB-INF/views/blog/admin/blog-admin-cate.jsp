@@ -44,21 +44,7 @@
 			      			<th>삭제</th>      			
 			      		</tr>
 		      		</thead>
-		      		<tbody id="cateList">
-		      			<!-- 리스트 영역 -->
-		      			<!--  
-		      			<tr>
-							<td>1</td>
-							<td>자바프로그래밍</td>
-							<td>7</td>
-							<td>자바기초와 객체지향</td>
-						    <td class='text-center'>
-						    	<img class="btnCateDel" src="${pageContext.request.contextPath}/assets/images/delete.jpg">
-						    </td>
-						</tr>
-						-->
-						<!-- 리스트 영역 -->
-					</tbody>
+		      		<tbody id="cateList"></tbody>
 				</table>
       	
 		      	<table id="admin-cate-add" >
@@ -102,9 +88,36 @@ $(document).ready(function(){
 	fetchList();
 })
 
+$("#btnAddCate").on('click', function(){
+	var cateName = $("[name = 'name']").val();
+	var description = $("[name = 'desc']").val();
+	var categoryVo = {
+			cateName: cateName,
+			description: description,
+			id: id
+	}
+	console.log(categoryVo);
+	$.ajax({
+		url : "${pageContext.request.contextPath}/${authUser.id}/admin/api/category/addList",
+		type : "post",
+		data : categoryVo,
+		dataType : "json",
+		success : function(categoryVo){
+			render(categoryVo,'up');
+			$('[name = "cateNo"]').val();
+			$('[name = "cateName"]').val();
+			$('[name = "count"]').val();
+			$('[name = "description"]').val();
+		},
+		error : function(XHR, status, error) {
+			console.log(status + ' : ' + error);
+		} });
+});
+
+
 function fetchList(){
 	$.ajax({
-		url : "${pageContext.request.contextPath}/admin/api/category/getList",
+		url : "${pageContext.request.contextPath}/${authUser.id}/admin/api/category/getList",
 		type : "post",
 		dataType : "json",
 		success : function(categoryVo){
