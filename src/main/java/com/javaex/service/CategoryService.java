@@ -23,8 +23,17 @@ public class CategoryService {
 		categoryDao.addList(categoryVo);
 	}
 	
-	public void delete(CategoryVo categoryVo) {
-		categoryDao.delete(categoryVo);
+	public String delete(CategoryVo categoryVo) {
+		int count = categoryDao.delete(categoryVo);
+		String status;
+		
+		if(count >0) {
+			status = "success";
+		}else {
+			status = "fail";
+		}
+		
+		return status;
 	}
 	
 	

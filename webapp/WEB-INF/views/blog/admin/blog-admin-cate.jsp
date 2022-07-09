@@ -114,11 +114,35 @@ $("#btnAddCate").on('click', function(){
 
 $("#cateList").on("click", ".btnCateDel", function(){
 	var $this = $(this);
-	var count = parseInt($this.count)
+	var count = parseInt($this.data("count"));
+	var cateNo = parseInt($this.data("cateno"));
 	console.log(count);
 	
-	
-	
+	if(count > 0){
+		alert("삭제 할 수 없습니다.")
+	}else{
+		var categoryVo = {
+			cateNo : cateNo
+		}
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath}/${authUser.id}/admin/api/category/delete",
+			type : "post",
+			data : categoryVo,
+			dataType : "json",
+			success : function(status){
+				if(status == "success"){
+					$("#t" + cateNo).remove();
+				}else{
+					alert("응 안돼");
+				}
+				
+			},
+			error : function(XHR, status, error) {
+				console.log(status + ' : ' + error);
+			}
+		})
+	}
 });
 
 
