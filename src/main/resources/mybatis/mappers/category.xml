@@ -16,21 +16,21 @@
 
 	<![CDATA[
 		select  cate.cateno
-       			,cate.catename
-        		,ct.count
-        		,cate.description
+        ,cate.catename
+        ,nvl(ct.counts,0) as count
+        ,cate.description
 
 		from category cate
-		
-		,
+        
+        ,
 
-		(select cateno
-		        ,count(*) count
-		from post
-		group by cateno) ct
-		where cate.cateno = ct.cateno
-		and cate.id = #{id}
-		order by cate.cateno desc
+		(select c.cateno
+		        ,count(*) counts
+		from category c, post p
+        where c.cateno = p.cateno
+		group by c.cateno) ct
+		where cate.id = #{id}
+        and cate.cateno = ct.cateno(+)
 		]]>
 
 	</select>

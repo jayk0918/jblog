@@ -31,13 +31,9 @@ public class ApiCategoryController {
 	@ResponseBody
 	@RequestMapping(value = "addList", method = {RequestMethod.GET, RequestMethod.POST})
 	public void addList(@ModelAttribute CategoryVo categoryVo) {
-		
 		System.out.println(categoryVo);
-		
 		categoryService.addList(categoryVo);
 	}
-	
-	
 	
 	
 	

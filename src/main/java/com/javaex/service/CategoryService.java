@@ -15,6 +15,7 @@ public class CategoryService {
 	private CategoryDao categoryDao;
 	
 	public List<CategoryVo> getList(String id){
+		
 		return categoryDao.getList(id);
 	}
 	
