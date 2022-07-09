@@ -36,6 +36,13 @@ public class ApiCategoryController {
 		return categoryVo;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "delete", method = {RequestMethod.GET, RequestMethod.POST})
+	public void delete(@ModelAttribute CategoryVo categoryVo) {
+		categoryService.delete(categoryVo);
+	}
+	
+	
 	
 	
 }

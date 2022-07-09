@@ -112,6 +112,18 @@ $("#btnAddCate").on('click', function(){
 		} });
 });
 
+$("#cateList").on("click", ".btnCateDel", function(){
+	var $this = $(this);
+	var count = parseInt($this.count)
+	console.log(count);
+	
+	
+	
+});
+
+
+
+
 
 function fetchList(){
 	$.ajax({
@@ -139,7 +151,8 @@ function render(categoryVo, opt){
 	str += '        <td>'+categoryVo.cateName+'</td>' ;
 	str += '        <td>'+categoryVo.count+'</td>' ;
 	str += '        <td>'+categoryVo.description+'</td>' ;
-	str += '        <td><img class="btnCateDel" src="${pageContext.request.contextPath}/assets/images/delete.jpg"></td>' ;
+	str += '        <td><img class="btnCateDel" src="${pageContext.request.contextPath}/assets/images/delete.jpg"'+
+		   			'data-cateno = '+categoryVo.cateNo+' data-count = '+categoryVo.count+'></td>' ;
 	str += '    </tr>' ;
 	
 	if(opt == "down"){

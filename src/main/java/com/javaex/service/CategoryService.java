@@ -23,6 +23,9 @@ public class CategoryService {
 		categoryDao.addList(categoryVo);
 	}
 	
+	public void delete(CategoryVo categoryVo) {
+		categoryDao.delete(categoryVo);
+	}
 	
 	
 	
