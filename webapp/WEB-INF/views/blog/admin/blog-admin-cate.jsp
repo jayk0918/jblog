@@ -104,9 +104,7 @@ $("#btnAddCate").on('click', function(){
 		dataType : "json",
 		success : function(categoryVo){
 			render(categoryVo,'up');
-			$('[name = "cateNo"]').val('');
 			$('[name = "cateName"]').val('');
-			$('[name = "count"]').val('');
 			$('[name = "description"]').val('');
 		},
 		error : function(XHR, status, error) {
