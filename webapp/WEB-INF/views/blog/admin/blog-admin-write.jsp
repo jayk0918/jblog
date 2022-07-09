@@ -7,8 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>JBlog</title>
+<!-- css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jblog.css">
-
+<!-- javascript -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 </head>
 
 <body>
@@ -22,7 +24,7 @@
 			<c:import url="/WEB-INF/views/includes/admin-menu.jsp"></c:import>
 			
 			<div id="admin-content">
-				<form action="" method="">
+				<form action="${pageContext.request.contextPath}/${authUser.id}/admin/post" method="post">
 			      	<table id="admin-write">
 			      		<colgroup>
 							<col style="width: 100px;">
@@ -35,11 +37,10 @@
 			      				<input type="text" name="postTitle">
 				      		</td>
 				      		<td>
-				      			<select name="cateNo">
-				      				<!-- 카테고리 리스트 영역 -->
+				      			<select id = "cateNo" name="cateNo">
+				      				<!-- 카테고리 리스트 영역 
 				      				<option value="">자바프로그래밍</option>
-				      				<option value="">오라클</option>
-				      				<!-- 카테고리 리스트 영역 -->
+				      				<option value="">오라클</option> -->
 				      			</select>
 				      		</td>
 			      		</tr>
@@ -64,4 +65,39 @@
 	</div>
 	<!-- //wrap -->
 </body>
+
+<script type = "text/javascript">
+
+$(document).ready(function(){
+	$.ajax({
+		url : "${pageContext.request.contextPath}/${authUser.id}/admin/api/category/getList",
+		type : "post",
+		dataType : "json",
+		success : function(categoryVo){
+			console.log(categoryVo);
+			for(var i=0; i<categoryVo.length; i++){
+				render(categoryVo[i]);
+			}
+		},
+		error : function(XHR, status, error) {
+			console.log(status + ' : ' + error);
+		}
+	})
+})
+
+function render(categoryVo){
+	console.log("render()");
+	var str = '';
+	str += '    <option value = ' +categoryVo.cateNo+ '">' ;
+	str += 		categoryVo.cateName ;
+	str += '    </option>' ;
+	
+	$("#cateNo").append(str);
+}
+
+
+
+</script>
+
+
 </html>
