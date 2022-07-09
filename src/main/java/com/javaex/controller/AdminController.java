@@ -1,5 +1,7 @@
 package com.javaex.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.BlogService;
+import com.javaex.service.CategoryService;
 import com.javaex.vo.BlogVo;
+import com.javaex.vo.CategoryVo;
 
 @RequestMapping(value = "{id}/admin")
 @Controller
@@ -18,6 +22,9 @@ public class AdminController {
 	
 	@Autowired
 	private BlogService blogService;
+	
+	@Autowired
+	private CategoryService categoryService;
 	
 	@RequestMapping(value = "basic", method = {RequestMethod.GET, RequestMethod.POST})
 	public String basic(@PathVariable String id, Model model) {
@@ -48,7 +55,9 @@ public class AdminController {
 	@RequestMapping(value = "writeForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String writeForm(@PathVariable String id, Model model) {
 		BlogVo blogVo = blogService.getInfo(id);
+		List<CategoryVo> cList = categoryService.getList(id);
 		model.addAttribute("blogVo", blogVo);
+		model.addAttribute("cList", cList);
 		return "blog/admin/blog-admin-write";
 	}
 	
