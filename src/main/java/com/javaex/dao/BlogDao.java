@@ -1,5 +1,7 @@
 package com.javaex.dao;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,7 +19,7 @@ public class BlogDao {
 		sqlSession.insert("blog.create", blogVo);
 	}
 	
-	public BlogVo getInfo(String id) {
+	public Map<String,Object> getInfo(String id) {
 		return sqlSession.selectOne("blog.getInfo", id);
 	}
 	

@@ -13,4 +13,19 @@
 	
 	</insert>
 	
+	
+	<select id = "getList" parameterType = "com.javaex.vo.PostVo">
+		<![CDATA[
+			select	postno
+					,cateno
+					,posttitle
+					,postcontent
+					,regdate
+			from post
+			where cateno = #{cateNo}
+			order by postno desc
+		]]>
+	</select>
+	
+	
 </mapper>

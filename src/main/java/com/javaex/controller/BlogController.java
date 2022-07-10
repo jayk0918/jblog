@@ -1,5 +1,7 @@
 package com.javaex.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.javaex.service.BlogService;
-import com.javaex.vo.BlogVo;
 
 @Controller
 public class BlogController {
@@ -17,8 +18,9 @@ public class BlogController {
 	
 	@RequestMapping(value = "{id}" , method = {RequestMethod.GET, RequestMethod.POST})
 	public String blogMain(@PathVariable String id, Model model) {
-		BlogVo blogVo = blogService.getInfo(id);
-		model.addAttribute("blogVo", blogVo);
+		Map<String, Object> blogInfoMap = blogService.getInfo(id);
+		model.addAttribute("blogVo", blogInfoMap);
+		
 		return "blog/blog-main";
 	}
 	
