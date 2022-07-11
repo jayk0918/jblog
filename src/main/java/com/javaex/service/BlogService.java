@@ -4,7 +4,6 @@ import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +19,8 @@ public class BlogService {
 	@Autowired
 	private BlogDao blogDao;
 	
-	public Map<String,Object> getInfo(String id) {
-		Map<String,Object> blogInfoMap = blogDao.getInfo(id);
-		return blogInfoMap;
+	public BlogVo getInfo(String id) {
+		return blogDao.getInfo(id);
 	}
 	
 	public void update(BlogVo blogVo, MultipartFile file) {

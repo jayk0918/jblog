@@ -14,16 +14,33 @@
 	</insert>
 	
 	
-	<select id = "getList" parameterType = "com.javaex.vo.PostVo">
+	<select id = "getList" parameterType = "com.javaex.vo.PostVo" resultType = "com.javaex.vo.PostVo">
 		<![CDATA[
-			select	postno
-					,cateno
-					,posttitle
-					,postcontent
-					,regdate
-			from post
-			where cateno = #{cateNo}
-			order by postno desc
+			select  c.cateno
+        			,c.catename
+        			,p.postno
+        			,p.posttitle
+        			,p.postcontent
+        			,p.regdate
+        	from post p, category c
+			where p.cateno = c.cateno
+			and c.cateno = #{cateNo}
+			order by p.postno desc
+		]]>
+	</select>
+	
+	
+	<select id = "getPost" parameterType = "com.javaex.vo.PostVo" resultType = "com.javaex.vo.PostVo">
+		<![CDATA[
+			select  c.cateno
+        			,c.catename
+        			,p.postno
+        			,p.posttitle
+        			,p.postcontent
+        			,p.regdate
+        	from post p, category c
+			where p.cateno = c.cateno
+			and p.postno = #{postNo}
 		]]>
 	</select>
 	

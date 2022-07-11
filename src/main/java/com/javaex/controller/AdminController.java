@@ -40,7 +40,6 @@ public class AdminController {
 		
 		BlogVo blogVo = new BlogVo();
 		blogVo.setBlogTitle(blogTitle);
-		blogVo.setId(id);
 		blogService.update(blogVo, file);
 		return "redirect:/" + blogVo.getId();
 	}

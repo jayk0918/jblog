@@ -1,5 +1,7 @@
 package com.javaex.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,13 @@ public class PostService {
 		return count;
 	}
 	
+	public List<PostVo> getList(int cateNo){
+		return postDao.getList(cateNo);
+	}
 	
+	public PostVo getPost(int postNo) {
+		return postDao.getPost(postNo);
+	}
 	
 	
 }

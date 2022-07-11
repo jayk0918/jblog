@@ -6,7 +6,7 @@ public class PostVo {
 	private int cateNo;
 	private String postTitle;
 	private String postContent;
-	private String date;
+	private String regDate;
 	
 	public PostVo() {}
 
@@ -42,19 +42,22 @@ public class PostVo {
 		this.postContent = postContent;
 	}
 
-	public String getDate() {
-		return date;
+
+	public String getRegDate() {
+		return regDate;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
 	}
 
 	@Override
 	public String toString() {
 		return "PostVo [postNo=" + postNo + ", cateNo=" + cateNo + ", postTitle=" + postTitle + ", postContent="
-				+ postContent + ", date=" + date + "]";
+				+ postContent + ", regDate=" + regDate + "]";
 	}
+
+	
 	
 	
 }
