@@ -54,22 +54,22 @@
 				<c:choose>
 					<c:when test = "${postVo != null }">
 						<div id="postBox" class="clearfix">
-								<div id="postTitle" class="text-left"><strong>${postVo.postTitle}</strong></div>
-								<div id="postDate" class="text-left"><strong>${postVo.regDate}</strong></div>
-								<div id="postNick">${blogVo.userName}님</div>
+							<div id="postTitle" class="text-left"><strong>${postVo.postTitle}</strong></div>
+							<div id="postDate" class="text-left"><strong>${postVo.regDate}</strong></div>
+							<div id="postNick">${blogVo.userName}님</div>
 						</div>
 						<!-- //postBox -->
 						
 						<div id="post" >
-							postContent
+							${postVo.postContent}
 						</div>
 						<!-- //post -->
 					</c:when>
 					<c:otherwise>
 						<div id="postBox" class="clearfix">
-									<div id="postTitle" class="text-left"><strong>등록된 글이 없습니다.</strong></div>
-									<div id="postDate" class="text-left"><strong></strong></div>
-									<div id="postNick"></div>
+							<div id="postTitle" class="text-left"><strong>등록된 글이 없습니다.</strong></div>
+							<div id="postDate" class="text-left"><strong></strong></div>
+							<div id="postNick"></div>
 						</div>
 						<div id="post" >
 						</div>
@@ -89,8 +89,6 @@
 								<td class="text-right">${postVo.regDate}</td>
 							</tr>
 						</c:forEach>
-						
-						
 					</table>
 				</div>
 				<!-- //list -->

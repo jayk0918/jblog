@@ -37,7 +37,6 @@ public class BlogController {
 		List<CategoryVo> cList = categoryService.getList(id);
 		List<PostVo> pList = postService.getList(cateNo);
 		
-		
 		model.addAttribute("blogVo", blogVo);
 		model.addAttribute("cList", cList);
 		model.addAttribute("pList", pList);
